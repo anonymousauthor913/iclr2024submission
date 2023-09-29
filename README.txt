@@ -1,3 +1,6 @@
+The main, organized libary code is in the folder timewarp_lib.
+
+
 For the experiments in our paper, we ran
 train_model.py
 train_model_no_tw.py
