@@ -11,7 +11,6 @@ train_model_notw_DTW.py
 
 created pca model on timing-augmented data using
 train_pca_model.py
-applied it using
 
 Also ran a single model from
 ./train_model_notw_trans.py
