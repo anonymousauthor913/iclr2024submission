@@ -5,8 +5,8 @@ import torch
 import timewarp_lib.train_utils as tu
 
 # use the length of the wii remote as our length scale
-inputfilename = "data/trainTest2DLetterAScaled.npz"
-savefilename = "data/trainTest2DLetterACachedAugments.npz"
+inputfilename = "data/trainTest2DLetterARescaled.npz"
+savefilename = "data/trainTest2DLetterACache.npz"
 
 np.random.seed(42)
 

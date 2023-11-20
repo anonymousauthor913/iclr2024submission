@@ -1,4 +1,4 @@
-all: | forkdata/forkTrajectoryData.npz data/trainTest2DLetterACachedAugments.npz
+all: | forkdata/forkTrajectoryData.npz data/trainTest2DLetterACache.npz
 
 forkdata/forkTrajectoryData.npz: | forkdata/20230222_194413/tip_pose_45.npy
 	jupyter nbconvert --execute --to notebook --inplace forkdata_formatting/CleanAndRandomlySampleForkData.ipynb
@@ -10,10 +10,10 @@ forkdata/fork_trajectory_recordings.zip:
 	mkdir -p forkdata
 	cp raw_fork_trajectory_data/fork_trajectory_recordings.zip forkdata/
 
-data/trainTest2DLetterACachedAugments.npz : data/trainTest2DLetterAScaled.npz
+data/trainTest2DLetterACache.npz : data/trainTest2DLetterARescaled.npz
 	./data_formatting/cache_noise_added_A.py
 
-data/trainTest2DLetterAScaled.npz : data/combined_trajectories.pickle
+data/trainTest2DLetterARescaled.npz : data/combined_trajectories.pickle data_formatting/test_train_A.py
 	./data_formatting/test_train_A.py 
 
 data/combined_trajectories.pickle: | data/matR_char_numpy/lower_a_C1_t01.npz

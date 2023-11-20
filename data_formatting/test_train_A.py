@@ -4,7 +4,7 @@ import numpy as np
 import pickle
 
 # use the length of the wii remote as our length scale
-savefilename = "data/trainTest2DLetterAScaled.npz"
+savefilename = "data/trainTest2DLetterARescaled.npz"
 
 def lininterp(xvals, yvals, numsamples):
     newxvals = np.linspace(np.min(xvals), np.max(xvals), numsamples)
@@ -48,11 +48,11 @@ test = rescaled_trajs[test_inds,:,:2]
 
 
 # the mean of all x,y,z,rw,rx,ry,rz pointwise (over all trajectories)
-train_pose_data_mean = np.mean(train_pose_data, axis=(0,1)).reshape(1,2)
+train_pose_data_mean = np.mean(train_pose_data, axis=(0,1)).reshape(1,1,2)
 train_pose_data_centered = train_pose_data - train_pose_data_mean
-position_std = np.sqrt(np.mean(np.var(train_pose_data_centered[:,:2],axis=0)))
+position_std = np.sqrt(np.var(train_pose_data_centered[:,:,:2]))
 position_scale = 1./position_std
-train_pose_data_scaling = np.array((position_scale, position_scale)).reshape(1,2)
+train_pose_data_scaling = np.array((position_scale, position_scale)).reshape(1,1,2)
 train_pose_data_scaled = train_pose_data_centered * train_pose_data_scaling
 
 test_centered = test - train_pose_data_mean
